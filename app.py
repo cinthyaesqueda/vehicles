@@ -1,9 +1,17 @@
 # app.py
+from pathlib import Path
 import pandas as pd
-import plotly.express as px
 import streamlit as st
+import plotly.express as px
 
-car_data = pd.read_csv(r'C:\Users\admin\vehicles\vehicles_us.csv')
+DATA_PATH = Path(__file__).parent / "vehicles_us.csv"   # si el CSV está junto a app.py
+# Si lo pusiste en carpeta data/: Path(__file__).parent / "data" / "vehicles_us.csv"
+
+if not DATA_PATH.exists():
+    st.error(f"No encuentro el archivo: {DATA_PATH}")
+    st.stop()
+
+car_data = pd.read_csv(DATA_PATH)
 
 # Mostrar las primeras filas para verificar columnas
 st.write("Vista previa de los datos:")
