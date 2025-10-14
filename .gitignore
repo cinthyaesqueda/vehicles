@@ -205,3 +205,11 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Archivos de Python a ignorar
+__pycache__/
+*.py[cod]
+*.env
+.env
+.vscode/
+.DS_Store
